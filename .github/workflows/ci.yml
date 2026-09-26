@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Server starts
+        env:
+          APP_PASSWORD: ci-password
+          PORT: 3000
+        run: |
+          node src/server.js &
+          for i in $(seq 1 20); do
+            curl -fsS -o /dev/null http://localhost:3000/login && exit 0
+            sleep 0.5
+          done
+          echo "server did not start" && exit 1
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t relay-browser .
+      - name: Container starts
+        run: |
+          docker run -d --name rb -p 3000:3000 -e APP_PASSWORD=ci-password relay-browser
+          for i in $(seq 1 30); do
+            curl -fsS -o /dev/null http://localhost:3000/login && exit 0
+            sleep 1
+          done
+          docker logs rb
+          exit 1

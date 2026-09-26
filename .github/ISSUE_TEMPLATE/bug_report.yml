@@ -1,0 +1,29 @@
+name: Bug report
+description: Something doesn't work, or a site doesn't load properly.
+labels: [bug]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: The page that misbehaves, if it's site-specific.
+      placeholder: https://example.com/page
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you expected, what you saw instead, and steps to reproduce.
+    validations:
+      required: true
+  - type: textarea
+    id: console
+    attributes:
+      label: Console errors and request log
+      description: Errors from the developer console, and failed entries from the Log panel.
+      render: text
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      description: Browser and version, Node.js version, how you host relay-browser.
+      placeholder: Firefox 131, Node 20, Docker on a VPS
