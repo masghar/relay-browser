@@ -1,0 +1,47 @@
+{
+  "name": "relay-browser",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Self-hosted private web browser: a sandboxed browser-in-a-browser that loads every page through your own server, so sites only ever see the server's IP. Blocks trackers and wipes everything when you close it.",
+  "keywords": [
+    "web-proxy",
+    "proxy-browser",
+    "self-hosted",
+    "privacy",
+    "browser-in-browser",
+    "remote-browser",
+    "private-browsing",
+    "tracker-blocker",
+    "sandbox",
+    "rewriting-proxy",
+    "nodejs",
+    "express",
+    "hls",
+    "dash",
+    "geo-testing",
+    "ip-testing"
+  ],
+  "homepage": "https://github.com/masghar/relay-browser#readme",
+  "bugs": {
+    "url": "https://github.com/masghar/relay-browser/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masghar/relay-browser.git"
+  },
+  "license": "MIT",
+  "author": "Muhammad Asghar",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}

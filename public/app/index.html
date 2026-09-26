@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; frame-src 'self'; base-uri 'none'; form-action 'self'; object-src 'none'; manifest-src 'self'">
+<title>Browser</title>
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#000000">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5m6-6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-forward" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-reload" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.34-5.66M20 4v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 10v4m0 3v.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="6" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-power" viewBox="0 0 24 24"><path d="M12 3v9M6.3 7.3a8 8 0 1 0 11.4 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-mark" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="currentColor"/><rect x="11" y="14" width="42" height="36" rx="6" fill="none" stroke="var(--surface)" stroke-width="3.5"/><path d="M11 23.5h42" stroke="var(--surface)" stroke-width="3.5"/><path d="M21 37.5h20m-7-7 7 7-7 7" fill="none" stroke="var(--surface)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </svg>
+
+  <div class="shell">
+    <aside class="rail" aria-label="Browser controls">
+      <div class="brand">
+        <svg class="brand-mark"><use href="#i-mark"/></svg>
+        <span class="brand-name">Relay</span>
+      </div>
+
+      <div class="nav-row">
+        <button class="icon-btn" id="back" title="Back (Alt+←)" aria-label="Back"><svg><use href="#i-back"/></svg></button>
+        <button class="icon-btn" id="forward" title="Forward (Alt+→)" aria-label="Forward"><svg><use href="#i-forward"/></svg></button>
+        <button class="icon-btn" id="reload" title="Reload (Ctrl+R)" aria-label="Reload"><svg><use href="#i-reload" id="reloadIcon"/></svg></button>
+        <button class="icon-btn" id="home" title="Start page" aria-label="Start page"><svg><use href="#i-home"/></svg></button>
+      </div>
+
+      <button class="addr" id="addrBtn" title="Go to an address (Ctrl+L)" aria-label="Current address. Activate to go somewhere else.">
+        <span class="addr-top">
+          <svg class="addr-icon"><use href="#i-search" id="siteBadgeIcon"/></svg>
+          <span class="addr-host" id="addrHost">Go to…</span>
+        </span>
+        <span class="addr-path" id="addrPath" hidden></span>
+        <span class="addr-insecure" id="addrInsecure" hidden>Not secure</span>
+      </button>
+
+      <div class="tabs-head">
+        <span>Tabs</span>
+        <button class="icon-btn small" id="newTab" title="New tab (Alt+T)" aria-label="New tab"><svg><use href="#i-plus"/></svg></button>
+      </div>
+      <div class="tabs" id="tabs" role="tablist" aria-orientation="vertical" aria-label="Open tabs"></div>
+
+      <div class="rail-foot">
+        <div class="route" id="routeChip" title="Pages load through a remote server">
+          <svg><use href="#i-route"/></svg>
+          <span id="routeChipText">Remote</span>
+        </div>
+        <div class="foot-actions">
+          <button class="foot-btn" id="logsToggle" title="Request log"><svg><use href="#i-list"/></svg><span>Log</span></button>
+          <button class="foot-btn end" id="endBtn" title="Sign out. Ends the session and deletes everything."><svg><use href="#i-power"/></svg><span>Sign out</span></button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="stage">
+      <div class="sheet" id="viewport">
+        <div class="progress" id="progress" hidden></div>
+        <aside id="logsPanel" class="logs-panel" hidden aria-label="Request log">
+          <div class="logs-header">
+            <span>Request log</span>
+            <span class="logs-actions">
+              <button class="text-btn" id="logsClear" title="Delete this session's request log">Clear</button>
+              <button class="icon-btn small" id="logsClose" title="Close" aria-label="Close request log"><svg><use href="#i-close"/></svg></button>
+            </span>
+          </div>
+          <div id="logsBody" class="logs-body"></div>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <div class="command" id="command" hidden>
+    <div class="command-backdrop" id="commandBackdrop"></div>
+    <form class="command-box" id="navForm" autocomplete="off" role="dialog" aria-label="Go to">
+      <svg><use href="#i-search"/></svg>
+      <input id="url" type="text" spellcheck="false" autocomplete="off" placeholder="Type an address or search" aria-label="Address or search">
+      <kbd>Enter</kbd>
+    </form>
+  </div>
+
+  <template id="newTabTemplate">
+    <section class="ntp">
+      <div class="ntp-inner">
+        <h1 class="ntp-title">Where to?</h1>
+        <form class="ntp-search" autocomplete="off">
+          <svg><use href="#i-search"/></svg>
+          <input type="text" spellcheck="false" autocomplete="off" placeholder="Type an address or search" aria-label="Address or search">
+        </form>
+        <p class="ntp-egress"><svg><use href="#i-route"/></svg><span class="ntp-egress-text">Checking which network you're browsing from…</span></p>
+        <p class="ntp-private">Nothing is saved. Signing out or closing this tab deletes everything.</p>
+      </div>
+    </section>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
