@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>relay-browser: self-hosted private web browser and web proxy</title>
+<meta name="description" content="relay-browser is an open-source, self-hosted private web browser. Every page loads through your own server, so sites only see the server's IP. Sandboxed tabs, tracker blocking, and nothing kept after you close it. Node.js, MIT licensed.">
+<meta name="keywords" content="self-hosted web proxy, private browser, browser in a browser, remote browser, proxy browser, web proxy node.js, tracker blocker, geo testing, test website from server IP, open source">
+<meta name="author" content="Muhammad Asghar">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://masghar.github.io/relay-browser/">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<meta name="theme-color" content="#000000">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="relay-browser">
+<meta property="og:title" content="relay-browser: self-hosted private web browser">
+<meta property="og:description" content="Browse the web from your own server, in a sandboxed browser that forgets everything. Open source, MIT.">
+<meta property="og:url" content="https://masghar.github.io/relay-browser/">
+<meta property="og:image" content="https://masghar.github.io/relay-browser/assets/social-preview.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="relay-browser: self-hosted private web browser">
+<meta name="twitter:description" content="Browse the web from your own server, in a sandboxed browser that forgets everything.">
+<meta name="twitter:image" content="https://masghar.github.io/relay-browser/assets/social-preview.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "relay-browser",
+  "applicationCategory": "BrowserApplication",
+  "operatingSystem": "Any (Node.js 18+)",
+  "description": "Self-hosted private web browser. Every page loads through your own server, with sandboxed tabs, tracker blocking, and no data kept after the session.",
+  "url": "https://masghar.github.io/relay-browser/",
+  "downloadUrl": "https://github.com/masghar/relay-browser",
+  "codeRepository": "https://github.com/masghar/relay-browser",
+  "license": "https://opensource.org/licenses/MIT",
+  "programmingLanguage": "JavaScript",
+  "author": { "@type": "Person", "name": "Muhammad Asghar" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+
+<style>
+  :root { color-scheme: light dark; --bg: #fff; --ink: #000; --muted: #5e5e5e; --line: #dcdcdc; --code: #f4f4f4; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #000; --ink: #fff; --muted: #a3a3a3; --line: #333; --code: #161616; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { width: min(760px, 100% - 40px); margin: 0 auto; padding: 64px 0 96px; }
+  header { display: flex; align-items: center; gap: 12px; margin-bottom: 56px; }
+  header img { width: 36px; height: 36px; }
+  header span { font-weight: 600; font-size: 18px; }
+  header nav { margin-left: auto; font-size: 15px; }
+  h1 { font-size: clamp(34px, 6vw, 52px); line-height: 1.08; letter-spacing: -.025em; margin: 0 0 20px; }
+  h2 { font-size: 24px; letter-spacing: -.01em; margin: 56px 0 12px; }
+  p, li { color: var(--muted); }
+  strong { color: var(--ink); }
+  a { color: var(--ink); }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 28px 0 40px; }
+  .button { display: inline-block; padding: 11px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: 1px solid var(--ink); }
+  .button.primary { background: var(--ink); color: var(--bg); }
+  img.shot { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 10px; }
+  pre { background: var(--code); border: 1px solid var(--line); border-radius: 8px; padding: 16px; overflow-x: auto; font-size: 14px; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  ul { padding-left: 20px; }
+  li { margin: 6px 0; }
+  footer { margin-top: 72px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="assets/logo.svg" alt="">
+    <span>relay-browser</span>
+    <nav><a href="https://github.com/masghar/relay-browser">GitHub</a></nav>
+  </header>
+
+  <h1>A private web browser that runs on your own server.</h1>
+  <p><strong>relay-browser</strong> is an open-source, self-hosted web proxy with a real browser interface.
+    Every page you open loads through your server, so websites only ever see the server's IP address.
+    Pages run in sandboxed tabs, trackers are blocked, and nothing is kept once you close it.</p>
+
+  <div class="cta">
+    <a class="button primary" href="https://github.com/masghar/relay-browser">View on GitHub</a>
+    <a class="button" href="https://github.com/masghar/relay-browser#quick-start">Quick start</a>
+  </div>
+
+  <img class="shot" src="assets/screenshot-light.png" width="1360" height="820" alt="relay-browser with a Wikipedia article open and tabs in the left sidebar">
+
+  <h2>What it's for</h2>
+  <ul>
+    <li><strong>Private browsing from a server's IP.</strong> Your own IP address is never sent to the sites you visit.</li>
+    <li><strong>Testing from another network or region.</strong> Check geo-restricted content, DNS changes, CDN routing and IP allowlists as your server sees them.</li>
+    <li><strong>Leaving no trace.</strong> No cookies, storage, cache or history stay behind on the device you browse from.</li>
+  </ul>
+
+  <h2>Features</h2>
+  <ul>
+    <li>Tabs, per-tab history and search, in a browser UI that runs in any modern browser</li>
+    <li>Each page sandboxed in its own origin, isolated from the UI and other tabs</li>
+    <li>Server-side tracker blocking and removal of tracking parameters</li>
+    <li>Works with modern JavaScript sites such as YouTube, GitHub and Wikipedia</li>
+    <li>Video: range requests for seeking, HLS and DASH manifest rewriting</li>
+    <li>Sessions end on sign-out or tab close, with <code>Clear-Site-Data</code></li>
+    <li>Password protected, rate limited, and nothing written to disk</li>
+    <li>Node.js, three dependencies, runs on a VPS, shared hosting or Docker</li>
+  </ul>
+
+  <h2>Get started</h2>
+<pre><code>git clone https://github.com/masghar/relay-browser.git
+cd relay-browser
+npm install
+cp .env.example .env    # set APP_PASSWORD
+npm start</code></pre>
+  <p>Or with Docker:</p>
+<pre><code>docker build -t relay-browser .
+docker run -d -p 3000:3000 -e APP_PASSWORD='choose-a-long-password' relay-browser</code></pre>
+
+  <h2>Open source</h2>
+  <p>relay-browser is MIT licensed. Bug reports, site-compatibility fixes and pull requests are welcome.
+    See the <a href="https://github.com/masghar/relay-browser/blob/main/CONTRIBUTING.md">contributing guide</a>.</p>
+
+  <footer>relay-browser &middot; MIT License &middot; Muhammad Asghar</footer>
+</main>
+</body>
+</html>
