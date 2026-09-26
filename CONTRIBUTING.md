@@ -14,7 +14,7 @@ npm start               # http://localhost:3000
 npm test
 ```
 
-Node.js 18 or newer is required. There is no build step: edit a file and restart.
+Node.js 20 or newer is required. There is no build step: edit a file and restart.
 
 ## Reporting a site that doesn't work
 
@@ -36,7 +36,7 @@ Please don't include anything personal from the pages you were browsing.
   sites you tested with and how.
 - Match the existing style: 2-space indent, single quotes, semicolons, and comments
   that explain *why* rather than *what*.
-- Run `npm test` before pushing. CI runs it on Node 18, 20 and 22.
+- Run `npm test` before pushing. CI runs it on Node 20, 22 and 24.
 
 ## Privacy and security are features
 

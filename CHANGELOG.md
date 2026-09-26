@@ -20,6 +20,6 @@ First public release.
 - `Clear-Site-Data` on sign-out, tab close and every load of the sign-in page.
 - Sign-in rate limiting and constant-time password comparison.
 - HTTP range requests, and HLS and DASH manifest rewriting for video.
-- Docker image and CI on Node 18, 20 and 22.
+- Docker image and CI on Node 20, 22 and 24.
 
 [1.0.0]: https://github.com/masghar/relay-browser/releases/tag/v1.0.0

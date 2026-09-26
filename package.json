@@ -33,7 +33,7 @@
   "author": "Muhammad Asghar",
   "main": "src/server.js",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "scripts": {
     "start": "node src/server.js",

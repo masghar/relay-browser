@@ -12,7 +12,7 @@
 <p align="center">
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-black"></a>
   <a href="https://github.com/masghar/relay-browser/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/masghar/relay-browser/actions/workflows/ci.yml/badge.svg"></a>
-  <img alt="Node.js 18 or newer" src="https://img.shields.io/badge/node-%3E%3D18-black">
+  <img alt="Node.js 20 or newer" src="https://img.shields.io/badge/node-%3E%3D20-black">
 </p>
 
 <p align="center">
@@ -57,7 +57,7 @@ into a private browser for everyday use.
 
 ## Quick start
 
-You need Node.js 18 or newer.
+You need Node.js 20 or newer.
 
 ```sh
 git clone https://github.com/masghar/relay-browser.git
