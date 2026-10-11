@@ -77,6 +77,19 @@
     }
   }
 
+  // A coloured letter for sites without a favicon. The hue comes from the
+  // host, so a site keeps the same colour across tabs.
+  function letterBadge(url) {
+    const host = hostOf(url).replace(/^www\./, '');
+    let hue = 0;
+    for (let i = 0; i < host.length; i++) hue = (hue * 31 + host.charCodeAt(i)) % 360;
+    const badge = document.createElement('span');
+    badge.className = 'tab-letter';
+    badge.style.setProperty('--hue', hue);
+    badge.textContent = (host[0] || '?').toUpperCase();
+    return badge;
+  }
+
   function faviconFallback(url) {
     try {
       return proxyUrlFor(new URL(url).origin + '/favicon.ico');
@@ -169,11 +182,11 @@
         img.referrerPolicy = 'no-referrer';
         img.src = tab.favicon;
         img.onerror = () => {
-          icon.innerHTML = '<svg><use href="#i-globe"/></svg>';
+          icon.replaceChildren(letterBadge(tab.url));
         };
         icon.replaceChildren(img);
       } else if (tab.url) {
-        icon.innerHTML = '<svg><use href="#i-globe"/></svg>';
+        icon.replaceChildren(letterBadge(tab.url));
       } else {
         icon.innerHTML = '';
       }
@@ -397,6 +410,10 @@
     ntp.querySelector('.ntp-search').addEventListener('submit', (e) => {
       e.preventDefault();
       navigate(tab, input.value);
+    });
+    ntp.querySelector('.ntp-links').addEventListener('click', (e) => {
+      const link = e.target.closest('.ntp-link');
+      if (link) navigate(tab, link.dataset.url);
     });
     viewport.appendChild(ntp);
     tab.ntp = ntp;
