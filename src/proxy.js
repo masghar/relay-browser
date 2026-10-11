@@ -105,7 +105,7 @@ function fetchUpstream(req, targetUrl, signal) {
     const upstreamReq = client.request(
       parsed,
       { method: req.method, headers, timeout: UPSTREAM_TIMEOUT_MS, signal },
-      (res) => resolve({ res, finalUrl: parsed.toString() })
+      (res) => resolve({ res, finalUrl: parsed.toString(), upstreamReq })
     );
 
     upstreamReq.on('timeout', () => upstreamReq.destroy(new Error('the site took too long to respond')));
@@ -341,7 +341,7 @@ async function handleProxyRequest(req, res) {
       return;
     }
 
-    const { res: upstreamRes, finalUrl } = upstream;
+    const { res: upstreamRes, finalUrl, upstreamReq } = upstream;
 
     if (isRedirect(upstreamRes.statusCode) && upstreamRes.headers.location) {
       upstreamRes.resume(); // discard body
@@ -397,6 +397,15 @@ async function handleProxyRequest(req, res) {
 
     // Binary passthrough (images, fonts, JS, media segments/files): stream
     // straight through, including Range/206 semantics, without buffering.
+    //
+    // The upstream timeout is for a site that never answers. Once a body is
+    // streaming, an idle upstream socket usually just means the client
+    // stopped reading: a <video> pauses its download whenever its buffer is
+    // full (mobile browsers keep that buffer small and pause often), and
+    // pipe() backpressure then idles the upstream socket. Timing out there
+    // cut videos off mid-playback. A client that goes away still aborts the
+    // upstream request via `controller`.
+    upstreamReq.setTimeout(0);
     res.status(upstreamRes.statusCode);
     if (upstreamRes.headers['content-length']) {
       res.set('Content-Length', upstreamRes.headers['content-length']);
@@ -413,7 +422,10 @@ async function handleProxyRequest(req, res) {
     // keeps that to a single log entry either way.
     upstreamRes.on('error', (err) => {
       recordOnce({ ok: false, message: `upstream stream error: ${err.message}`, kind });
-      res.end();
+      // destroy, not end: the response already promised Content-Length
+      // bytes, so a clean end would leave the player waiting for the rest.
+      // A dropped connection makes it re-request from where it got to.
+      res.destroy();
     });
     res.on('finish', () => {
       recordOnce({ status: upstreamRes.statusCode, ok: true, kind });
