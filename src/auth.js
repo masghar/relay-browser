@@ -6,11 +6,16 @@
 const crypto = require('crypto');
 const session = require('./session');
 
-// Tells the browser to delete everything this origin stored: cookies,
-// localStorage/IndexedDB/cache storage, and the HTTP cache. Sent when a
-// session ends and whenever the sign-in page loads, so nothing a proxied
-// site managed to leave behind outlives the session.
-const CLEAR_SITE_DATA = '"cache", "cookies", "storage"';
+// Tells the browser to delete everything this origin stored: cookies and
+// localStorage/IndexedDB/cache storage. Sent when a session ends and
+// whenever the sign-in page loads, so nothing a proxied site managed to
+// leave behind outlives the session.
+//
+// Deliberately not "cache": every response is no-store, so the HTTP cache
+// holds nothing of ours, and Chrome holds the response back while it scans
+// the *whole* disk cache for this origin -- seconds on a well-used browser,
+// on every sign-in page load and sign-out.
+const CLEAR_SITE_DATA = '"cookies", "storage"';
 
 // Failed sign-ins: 5 per 15 minutes per IP.
 const MAX_FAILURES = 5;

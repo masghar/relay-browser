@@ -145,7 +145,9 @@ What relay-browser guarantees:
 - Nothing persists in the browser. The only cookie is the sign-in cookie. It is
   `HttpOnly`, `SameSite=Strict`, and deleted when the browser closes.
 - Sign-out and closing the tab destroy the session and its request log on the server,
-  and send `Clear-Site-Data` so the browser deletes cookies, storage and cache. The
+  and send `Clear-Site-Data` so the browser deletes cookies and storage. (Not the
+  HTTP cache: every response is `no-store`, so there's nothing in it to clear, and
+  asking Chrome to clear it anyway makes it scan its whole disk cache first.) The
   sign-in page sends the same header every time it loads, as a backstop.
 - Nothing is written to disk on the server.
 
