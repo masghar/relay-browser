@@ -11,7 +11,7 @@
 <link rel="icon" href="/icons/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
-<meta name="theme-color" content="#6D4AFF">
+<meta name="theme-color" content="#1D63ED">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -30,7 +30,7 @@
     <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="6" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-power" viewBox="0 0 24 24"><path d="M12 3v9M6.3 7.3a8 8 0 1 0 11.4 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-    <linearGradient id="g-mark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6D4AFF"/><stop offset=".55" stop-color="#F0437E"/><stop offset="1" stop-color="#FFB547"/></linearGradient>
+    <linearGradient id="g-mark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#06B6D4"/><stop offset=".6" stop-color="#1D63ED"/><stop offset="1" stop-color="#3949D6"/></linearGradient>
     <symbol id="i-mark" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="url(#g-mark)"/><rect x="11" y="14" width="42" height="36" rx="6" fill="none" stroke="#fff" stroke-width="3.5"/><path d="M11 23.5h42" stroke="#fff" stroke-width="3.5"/><path d="M21 37.5h20m-7-7 7 7-7 7" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.3 7.5 9.5 4.3-1.2 7.5-4.9 7.5-9.5V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m8.8 12 2.3 2.3 4.2-4.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M3 12s3.3-6 9-6 9 6 9 6-3.3 6-9 6-9-6-9-6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 4l16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
@@ -51,8 +51,8 @@
       </div>
 
       <div class="nav-row">
-        <button class="icon-btn c-violet" id="back" title="Back (Alt+←)" aria-label="Back"><svg><use href="#i-back"/></svg></button>
-        <button class="icon-btn c-violet" id="forward" title="Forward (Alt+→)" aria-label="Forward"><svg><use href="#i-forward"/></svg></button>
+        <button class="icon-btn c-blue" id="back" title="Back (Alt+←)" aria-label="Back"><svg><use href="#i-back"/></svg></button>
+        <button class="icon-btn c-blue" id="forward" title="Forward (Alt+→)" aria-label="Forward"><svg><use href="#i-forward"/></svg></button>
         <button class="icon-btn c-teal" id="reload" title="Reload (Ctrl+R)" aria-label="Reload"><svg><use href="#i-reload" id="reloadIcon"/></svg></button>
         <button class="icon-btn c-amber" id="home" title="Start page" aria-label="Start page"><svg><use href="#i-home"/></svg></button>
       </div>
@@ -78,7 +78,7 @@
           <span id="routeChipText">Remote</span>
         </div>
         <div class="foot-actions">
-          <button class="foot-btn c-blue" id="logsToggle" title="Request log"><svg><use href="#i-list"/></svg><span>Log</span></button>
+          <button class="foot-btn c-violet" id="logsToggle" title="Request log"><svg><use href="#i-list"/></svg><span>Log</span></button>
           <button class="foot-btn end" id="endBtn" title="Sign out. Ends the session and deletes everything."><svg><use href="#i-power"/></svg><span>Sign out</span></button>
         </div>
       </div>

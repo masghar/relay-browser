@@ -1,44 +1,49 @@
-/* Private browser chrome. A cool lavender window with a "relay spectrum"
-   of accents: every control has its own colour (violet to move, teal for
-   the route, amber for home, red to sign out), and violet-to-pink marks
-   activity. Tabs run down the side and the page sits on an inset sheet. */
+/* Private browser chrome. A cool slate window with a cyan-to-blue
+   "signal" accent for the brand, focus and activity, and every control in
+   its own colour (blue to move, teal for the route, amber for home, red to
+   sign out). Tabs run down the side and the page sits on an inset sheet. */
 
 :root {
   color-scheme: light dark;
-  --bg: #f1f0fa;        /* sidebar / window */
+  --bg: #eef2f8;        /* sidebar / window */
   --surface: #ffffff;   /* sheet, cards, active tab */
-  --hover: #e6e3f7;
-  --line: #dcd8f0;
-  --ink: #17142b;
-  --muted: #5d5878;
-  --faint: #938fab;
+  --hover: #e1e8f3;
+  --line: #d3dce9;
+  --ink: #0f1a2b;
+  --muted: #4f5d73;
+  --faint: #8794a8;
   --danger: #e5484d;
-  --shadow: 0 1px 2px rgba(40, 20, 120, .06), 0 8px 24px rgba(40, 20, 120, .08);
+  --shadow: 0 1px 2px rgba(15, 40, 90, .06), 0 8px 24px rgba(15, 40, 90, .08);
   --rail-w: 264px;
 
-  --violet: #6d4aff;
+  --primary: #1d63ed;
+  --cyan: #0891b2;
+  --violet: #7c5cff;
   --teal: #0e9f9a;
   --pink: #e8366f;
   --amber: #d98400;
   --blue: #2f7cf6;
   --red: #e5484d;
-  --spectrum: linear-gradient(90deg, var(--violet), var(--pink) 55%, #ffb547);
+  --spectrum: linear-gradient(90deg, var(--cyan), var(--primary) 60%, #3949d6);
   --tint: 14%;          /* strength of a colour chip's background */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #15131f;
-    --surface: #1f1c2e;
-    --hover: #2a2640;
-    --line: #36314f;
-    --ink: #f4f2ff;
-    --muted: #aaa4c8;
-    --faint: #75709a;
+    --bg: #0f141d;
+    --surface: #182030;
+    --hover: #222c3f;
+    --line: #2e3a50;
+    --ink: #eef3fb;
+    --muted: #9fb0c8;
+    --faint: #6b7a92;
     --danger: #ff7a7e;
     --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .35);
 
-    --violet: #9d85ff;
+    --primary: #5b9bff;
+    --cyan: #22c3e6;
+    --violet: #a08cff;
+    --spectrum: linear-gradient(90deg, var(--cyan), var(--primary) 60%, #7c8cff);
     --teal: #3dd6c9;
     --pink: #ff6e9c;
     --amber: #ffbe4d;
@@ -63,8 +68,8 @@
   width: 28px;
   height: 28px;
   border-radius: 8px;
-  background: color-mix(in srgb, var(--c, var(--violet)) var(--tint), transparent);
-  color: var(--c, var(--violet));
+  background: color-mix(in srgb, var(--c, var(--primary)) var(--tint), transparent);
+  color: var(--c, var(--primary));
 }
 
 * { box-sizing: border-box; }
@@ -84,7 +89,7 @@ html, body {
 
 button { font: inherit; color: inherit; }
 svg { width: 16px; height: 16px; flex: none; }
-:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 
 .shell {
   height: 100%;
@@ -173,7 +178,7 @@ svg { width: 16px; height: 16px; flex: none; }
   text-align: left;
   cursor: text;
 }
-.addr:hover { border-color: var(--violet); }
+.addr:hover { border-color: var(--primary); }
 .addr-top { display: flex; align-items: center; gap: 8px; min-width: 0; }
 .addr-icon { width: 13px; height: 13px; color: var(--teal); }
 .addr.insecure .addr-icon { color: var(--danger); }
@@ -245,7 +250,7 @@ svg { width: 16px; height: 16px; flex: none; }
   bottom: 8px;
   width: 3px;
   border-radius: 0 3px 3px 0;
-  background: linear-gradient(var(--violet), var(--pink));
+  background: linear-gradient(var(--cyan), var(--primary));
 }
 
 .tab-icon {
@@ -274,7 +279,7 @@ svg { width: 16px; height: 16px; flex: none; }
   height: 13px;
   border-radius: 50%;
   border: 2px solid var(--line);
-  border-top-color: var(--pink);
+  border-top-color: var(--primary);
   animation: spin .8s linear infinite;
 }
 
@@ -396,8 +401,8 @@ svg { width: 16px; height: 16px; flex: none; }
   display: grid;
   place-items: center;
   background:
-    radial-gradient(60% 50% at 15% 0%, color-mix(in srgb, var(--violet) 12%, transparent), transparent),
-    radial-gradient(50% 45% at 100% 10%, color-mix(in srgb, var(--pink) 10%, transparent), transparent),
+    radial-gradient(60% 50% at 15% 0%, color-mix(in srgb, var(--primary) 11%, transparent), transparent),
+    radial-gradient(50% 45% at 100% 10%, color-mix(in srgb, var(--cyan) 10%, transparent), transparent),
     var(--surface);
 }
 .ntp-inner {
@@ -427,10 +432,10 @@ svg { width: 16px; height: 16px; flex: none; }
   box-shadow: var(--shadow);
 }
 .ntp-search:focus-within {
-  border-color: var(--violet);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--violet) 18%, transparent);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 18%, transparent);
 }
-.ntp-search svg { color: var(--violet); width: 18px; height: 18px; }
+.ntp-search svg { color: var(--primary); width: 18px; height: 18px; }
 .ntp-search input {
   flex: 1;
   min-width: 0;
@@ -491,7 +496,7 @@ svg { width: 16px; height: 16px; flex: none; }
 .command-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(30, 15, 80, .4);
+  background: rgba(10, 25, 60, .4);
   -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
 }
@@ -511,7 +516,7 @@ svg { width: 16px; height: 16px; flex: none; }
   background: var(--surface);
   box-shadow: 0 20px 60px rgba(0, 0, 0, .25);
 }
-.command-box svg { color: var(--violet); width: 18px; height: 18px; }
+.command-box svg { color: var(--primary); width: 18px; height: 18px; }
 .command-box input {
   flex: 1;
   min-width: 0;
